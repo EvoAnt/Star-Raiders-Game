@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+body button {
+  font-family: "common pixel", sans-serif;
+  font-size: 30px;
+  background-color: rgb(203, 9, 9);
+  color: #fff;
+  padding: 20px 40px;
+  border: 1px solid;
+  height: 10%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#start-button:hover {
+  background-color: #870007;
+  transition: 0.1s;
+}
+
+body h1 {
+  font-family: "aferd", sans-serif;
+  font-size: 80px;
+  margin-top: 0px;
+}
+
+#game-intro-window {
+  display: flex;
+  justify-content: center;
+}
+
+#game-intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 90vh;
+  width: 90vw;
+  color: white;
+  background-image: url("../images/stars.gif");
+  background-size: cover;
+}
+
+.game-intro-image {
+  width: 100px;
+  height: 100px;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 20px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url("../images/stars.gif");
+  background-size: cover;
+}
+
+#game-container {
+  display: none;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+  color: white;
+  text-align: left;
+}
+
+#game-end {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-image: url("../images/exploded-star.jpg");
+  height: 80vh;
+
+  background-size: cover;
+}
+
+#game-end h2 {
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 20px;
+}
+
+.end-game-image {
+  width: 500px;
+  height: 250px;
+  padding-bottom: 20px;
+}
+
+#restart-button:hover {
+  background-color: #870007;
+  transition: 0.1s;
+}
+
+#game-stats {
+    font-family: "common pixel", sans-serif;
+}

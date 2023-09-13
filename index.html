@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/aferd" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+
+    <title>Star Raiders</title>
+  </head>
+  <body>
+    <div id="game-intro-window">
+      <div id="game-intro">
+        <h1>Star Raiders</h1>
+
+        <button id="start-button" type="button">Start Game</button>
+
+        <p>Use the <span>UP</span> and <span>DOWN</span> arrow keys to move</p>
+        <p>Use <span>SPACE BAR</span> to shoot</p>
+
+        <img class="game-intro-image" src="./images/spaceship.png" alt="" />
+      </div>
+    </div>
+
+    <div id="game-container">
+      <div id="game-stats">
+        <h3>Score: <span id="game-score">0</span></h3>
+        <h3>Lives: <span id="game-lives">3</span></h3>
+      </div>
+      <div id="game-screen"></div>
+    </div>
+
+    <div id="game-end">
+      <h1>Game Over</h1>
+      <h2>You let the stars be destroyed!</h2>
+
+      <button id="restart-button" type="button">Restart Game</button>
+    </div>
+
+    <script type="text/javascript" src="./game.js"></script>
+  </body>
+</html>
