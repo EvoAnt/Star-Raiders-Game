@@ -61,6 +61,7 @@ class Game {
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
+    this.gameOverScore = document.getElementById("game-over-score");
     this.scoreBoard = document.getElementById("game-score");
     this.livesBoard = document.getElementById("game-lives");
     this.player = new Player(
@@ -96,7 +97,7 @@ class Game {
     }
 
     this.enemyCounter++;
-    if (this.enemyCounter % 40 === 0) {
+    if (this.enemyCounter % 30 === 0) {
       this.enemy.push(new Enemy(this.gameScreen));
     }
 
@@ -179,6 +180,7 @@ class Game {
 
     this.scoreBoard.innerHTML = this.score;
     this.livesBoard.innerHTML = this.lives;
+    this.gameOverScore.innerHTML = this.score;
   }
 
   winGame() {
@@ -211,6 +213,7 @@ class Game {
     this.gameScreen.style.display = "none";
     this.gameStats.style.display = "none";
     this.gameEnd.style.display = "flex";
+    this.scoreBoard.style.display = "block";
   }
 }
 
