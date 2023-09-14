@@ -76,6 +76,7 @@ class Game {
   }
 
   startGame() {
+    this.bullets = [];
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
 
