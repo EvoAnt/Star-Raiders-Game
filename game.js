@@ -9,6 +9,7 @@ window.onload = function () {
 
   for (const restartButton of restartButtons) {
     restartButton.addEventListener("click", function () {
+      window.location.reload();
       startGame();
     });
   }
@@ -87,6 +88,7 @@ class Game {
     this.statScreen.style.display = "flex";
     this.gameStats.style.display = "block";
     this.introSong.play();
+    this.introSong.volume = 0.5;
     this.gameLoop();
   }
 
