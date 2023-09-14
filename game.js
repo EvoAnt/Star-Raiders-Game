@@ -1,15 +1,17 @@
 window.onload = function () {
   const startButton = document.getElementById("start-button");
-  const restartButton = document.getElementById("restart-button");
+  const restartButtons = document.getElementsByClassName("restart-button");
   let game;
 
   startButton.addEventListener("click", function () {
     startGame();
   });
 
-  restartButton.addEventListener("click", function () {
-    startGame();
-  });
+  for (const restartButton of restartButtons) {
+    restartButton.addEventListener("click", function () {
+      startGame();
+    });
+  }
 
   function startGame() {
     console.log("start game");
@@ -42,9 +44,13 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEnd = document.getElementById("game-end");
+    this.winScreen = document.getElementById("game-win");
     this.statScreen = document.getElementById("game-container");
     this.gameStats = document.getElementById("game-stats");
     this.introSong = new Audio("./audio/Justice.mp4");
+    this.winSong = new Audio("./audio/win.mp3");
+    this.loseSong = new Audio("./audio/lose.wav");
+    this.explosionSFX = new Audio("./audio/explosion.mp3");
     this.height = 700;
     this.width = 1200;
     this.enemy = [];
@@ -74,6 +80,7 @@ class Game {
 
     this.startScreen.style.display = "none";
     this.gameEnd.style.display = "none";
+    this.winScreen.style.display = "none";
     this.gameScreen.style.display = "block";
     this.statScreen.style.display = "flex";
     this.gameStats.style.display = "block";
@@ -96,9 +103,9 @@ class Game {
     for (let i = this.bullets.length - 1; i >= 0; i--) {
       for (let j = this.enemy.length - 1; j >= 0; j--) {
         if (this.didCollide(this.bullets[i], this.enemy[j])) {
-          let explosionSFX = new Audio("./audio/explosion.mp3");
-          explosionSFX.play();
-
+          this.explosionSFX.currentTime = 0;
+          this.explosionSFX.volume = 0.5;
+          this.explosionSFX.play();
           this.explosionArr.push(
             new Explosion(this.gameScreen, this.bullets[i], this.explosionArr)
           );
@@ -114,8 +121,8 @@ class Game {
 
     for (let i = this.enemy.length - 1; i >= 0; i--) {
       if (this.didCollide(this.player, this.enemy[i])) {
-        let explosionSFX = new Audio("./audio/lose.wav");
-        explosionSFX.play();
+        this.loseSong.currentTime = 0;
+        this.loseSong.play();
         this.enemy[i].element.remove();
         this.enemy.splice(i, 1);
         this.lives--;
@@ -166,10 +173,29 @@ class Game {
 
     if (this.lives <= 0) {
       this.endGame();
+    } else if (this.score >= 2000) {
+      this.winGame();
     }
 
     this.scoreBoard.innerHTML = this.score;
     this.livesBoard.innerHTML = this.lives;
+  }
+
+  winGame() {
+    this.introSong.pause();
+    this.explosionSFX.pause();
+    this.winSong.play();
+    this.player.element.remove();
+    this.enemy.forEach(function (enemy) {
+      enemy.element.remove();
+    });
+    this.bullets.forEach(function (bullets) {
+      bullets.element.remove();
+    });
+    this.gameIsOver = true;
+    this.gameScreen.style.display = "none";
+    this.gameStats.style.display = "none";
+    this.winScreen.style.display = "flex";
   }
 
   endGame() {

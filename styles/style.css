@@ -78,7 +78,6 @@ body h1 {
   color: white;
   background-image: url("../images/exploded-star.jpg");
   height: 80vh;
-
   background-size: cover;
 }
 
@@ -94,11 +93,35 @@ body h1 {
   padding-bottom: 20px;
 }
 
-#restart-button:hover {
+.restart-button:hover {
   background-color: #870007;
   transition: 0.1s;
 }
 
 #game-stats {
     font-family: "common pixel", sans-serif;
+}
+
+#game-win {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  background-image: url("../images/exploded-star.jpg");
+  height: 80vh;
+  background-size: cover;
+}
+
+#game-win h2 {
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-bottom: 20px;
+}
+
+.end-win-image {
+  width: 500px;
+  height: 250px;
+  padding-bottom: 20px;
 }
