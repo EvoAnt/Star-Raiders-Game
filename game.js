@@ -52,7 +52,7 @@ class Game {
     this.winSong = new Audio("./audio/win.mp3");
     this.loseSong = new Audio("./audio/lose.wav");
     this.explosionSFX = new Audio("./audio/explosion.mp3");
-    this.height = 700;
+    this.height = 650;
     this.width = 1200;
     this.enemy = [];
     this.bullets = [];
@@ -100,7 +100,7 @@ class Game {
     }
 
     this.enemyCounter++;
-    if (this.enemyCounter % 30 === 0) {
+    if (this.enemyCounter % 50 === 0) {
       this.enemy.push(new Enemy(this.gameScreen));
     }
 
@@ -177,7 +177,7 @@ class Game {
 
     if (this.lives <= 0) {
       this.endGame();
-    } else if (this.score >= 2000) {
+    } else if (this.score >= 10000) {
       this.winGame();
     }
 
@@ -282,7 +282,7 @@ class Enemy {
     this.gameScreen.appendChild(this.element);
   }
   move() {
-    this.right += 10;
+    this.right += 5;
     this.updatePosition();
   }
 
